@@ -1,0 +1,50 @@
+// a discrdjs vscode snippets extenstion
+// made by: bisher almasri
+
+{
+    "discord.js": {
+        "prefix": "djs",
+        "body": [
+            "const Discord = require('discord.js');",
+            "const client = new Discord.Client({ intents: ['Guilds', 'GuildMessages', 'GuildMembers']});",
+            "",
+            "client.on('ready', () => {",
+            "\tconsole.log('I am ready!');",
+            "});",
+            "",
+            "client.on('message', message => {",
+            "\tif (message.content === 'ping') {",
+            "\t\tmessage.reply('Pong!');",
+            "\t}",
+            "});",
+            "",
+            "client.login('token');"
+        ],
+        "description": "discord.js bot"
+    },
+    "discord.js command": {
+        "prefix": "djscommand",
+        "body": [
+            "module.exports = {",
+            "\tname: 'command name',",
+            "\tdescription: 'command description',",
+            "\texecute(message, args) {",
+            "\t\t// code here",
+            "\t}",
+            "};"
+        ],
+        "description": "discord.js command"
+    },
+    "discord.js event": {
+        "prefix": "djsevent",
+        "body": [
+            "module.exports = {",
+            "\tname: 'event name',",
+            "\texecute(client) {",
+            "\t\t// code here",
+            "\t}",
+            "};"
+        ],
+        "description": "discord.js event"
+    }
+}
