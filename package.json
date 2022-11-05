@@ -1,7 +1,12 @@
 {
   "name": "discordjs-snippets",
   "displayName": "discordjs-snippets",
+  "publisher": "BisherAlmasri",
   "description": "A free to use discord js snippets",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BisherAlmasri/discord-snippets"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.73.0"
