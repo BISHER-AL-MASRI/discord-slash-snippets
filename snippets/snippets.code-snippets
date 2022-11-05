@@ -9,11 +9,12 @@
             "",
             "module.exports = {",
             "data: new SlashCommandBuilder()",
-            "    .setName('name')",
-            "    .setDescription('description'),", 
+            "\t.setName('name')",
+            "\t.setDescription('description'),", 
             "async execute(interaction) {",
-            "    // code",    
-            "}",
+            "\t// code",    
+            "\t}",
+            "};"
         ],
         "description": "discord.js command"
     },

@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/BisherAlmasri/discord-slash-snippets"
   },
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.73.0"
   },
