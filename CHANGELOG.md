@@ -1,3 +1,3 @@
 # Change Log
 
-Made it better
+Fixed bugs
