@@ -2,36 +2,18 @@
 // made by: bisher almasri
 
 {
-    "discord.js": {
-        "prefix": "djs",
-        "body": [
-            "const Discord = require('discord.js');",
-            "const client = new Discord.Client({ intents: ['Guilds', 'GuildMessages', 'GuildMembers']});",
-            "",
-            "client.on('ready', () => {",
-            "\tconsole.log('I am ready!');",
-            "});",
-            "",
-            "client.on('message', message => {",
-            "\tif (message.content === 'ping') {",
-            "\t\tmessage.reply('Pong!');",
-            "\t}",
-            "});",
-            "",
-            "client.login('token');"
-        ],
-        "description": "discord.js bot"
-    },
     "discord.js command": {
         "prefix": "djscommand",
         "body": [
+            "const { SlashCommandBuilder } = require('@discordjs/builders');",
+            "",
             "module.exports = {",
-            "\tname: 'command name',",
-            "\tdescription: 'command description',",
-            "\texecute(message, args) {",
-            "\t\t// code here",
-            "\t}",
-            "};"
+            "data: new SlashCommandBuilder()",
+            "    .setName('name')",
+            "    .setDescription('description'),", 
+            "async execute(interaction) {",
+            "    // code",    
+            "}",
         ],
         "description": "discord.js command"
     },
@@ -39,6 +21,7 @@
         "prefix": "djsevent",
         "body": [
             "module.exports = {",
+            "once: true,",
             "\tname: 'event name',",
             "\texecute(client) {",
             "\t\t// code here",
@@ -46,5 +29,57 @@
             "};"
         ],
         "description": "discord.js event"
+    },
+    "discord.js bot": {
+        "prefix": "djsbot",
+        "body": [
+            "require('dotenv').config();",
+            "const fs = require('fs');",
+            "",
+            "const { Client, Collection, EmbedBuilder } = require('discord.js');",
+            "const client = new Client({",
+            "intents: [",
+            "    'Guilds',",
+            "    'GuildMessages',",
+            "    'GuildMembers'",
+            "]});",
+
+            "client.on('error', (err) => {",
+            "    console.log(err.message)",
+            "});",
+
+            "const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));",
+
+            "const commands = [];",
+
+            "client.commands = new Collection();",
+
+            "for (const file of commandFiles) {",
+            "    const command = require(`./commands/${file}`);",
+            "    commands.push(command.data.toJSON());",
+            "    client.commands.set(command.data.name, command);",
+            "}",
+
+            "const eventFiles = fs",
+            "    .readdirSync('./events')",
+            "    .filter(file => file.endsWith('.js'));",
+                
+            "for (const file of eventFiles) {",
+            "    const event = require(`./events/${file}`);",
+            "    ",
+            "    if (event.once) {",
+            "        client.once(event.name, (...args) => event.execute(...args, commands));",
+            "    } else {",
+            "        client.on(event.name, (...args) => event.execute(...args, commands,));",
+            "    }",
+            "}",
+
+            "process.on('unhandledRejection', (_) =>",
+            "    console.error(_.stack + '\n' + '='.repeat(20))",
+            ");",
+
+            "client.login(process.env.TOKEN);"
+        ],
+        "description": "discord.js bot"
     }
 }

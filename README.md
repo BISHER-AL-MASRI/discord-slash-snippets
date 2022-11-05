@@ -1,20 +1,17 @@
-<!-- make a read me for a discordjs snippet extenstion -->
-# Discord.js Snippet Extension
+# Discord Slash Snippets Extension
 
-This is a snippet extension for discord.js. It is a work in progress and will be updated frequently.
+This is a snippet extension for discord.js slash commands. It is a work in progress and will be updated frequently.
 
 ## Installation
 
 1. Download the extension
-2. Open the extension folder
-3. Open the snippets folder
-4. Copy the snippets you want to use
-5. Paste them into your snippets folder
+2. Open the workspace in VSCode
+3. Open the command palette (Ctrl+Shift+P)
+4. Type `Install from VSIX...`
+5. Select the extension file
 6. Enjoy!
 
 ## Snippets
-
-### Discord.js
 
 | Snippet | Description |
 |   ---   |     ---     |
